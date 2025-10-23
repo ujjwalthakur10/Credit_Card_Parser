@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parsing Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Lato:400,700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(115deg, #232a34 0%, #293e5b 70%, #16213e 100%);
+        font-family: 'Montserrat', 'Lato', sans-serif;
+        color: #232a34;
+        min-height: 100vh;
+        margin: 0;
+        padding-top: 60px;
+      }
+      .navbar {
+        background: linear-gradient(90deg, #E5E7E9 0%, #45526e 70%, #16213e 100%);
+        color: #1b2631;
+        font-weight: 700;
+        letter-spacing: 2px;
+        padding: 18px 45px 18px 60px;
+        font-size: 1.25rem;
+        box-shadow: 0 2px 17px #232a3425;
+        border-bottom: 3px solid #B2BABB;
+      }
+      .main-card {
+        background: linear-gradient(120deg, #222d3b 0%, #3e4c66 60%, #232a34 100%);
+        color: #161c20;
+        border-radius: 20px;
+        padding: 40px 32px 20px 32px;
+        box-shadow: 0 6px 32px #26333a88;
+        max-width: 1000px;
+        margin: 50px auto 32px auto;
+      }
+      h2 {
+        font-size: 2.1rem;
+        font-weight: 700;
+        color: #AAB7B8;
+        margin-bottom: 26px;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+      table {
+        background: #fff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 2px 11px #232a3433;
+        margin: 0 auto 18px auto;
+      }
+      th {
+        background: linear-gradient(90deg,#566573 0%,#AAB7B8 100%);
+        color: #18222E;
+        font-size: 1.07rem;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: .5px;
+        border-bottom: 3px solid #232a34;
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+      td {
+        background: #fff !important;
+        color: #2D333B;
+        font-size: 1.06rem;
+        padding: 14px;
+        text-align: center;
+        border-bottom: 1px solid #566573;
+      }
+      /* Remove zebra striping on even rows */
+      /* tr:nth-child(even) td {
+        background: #2D2E3F;
+      } */
+      .btn-primary {
+        background: linear-gradient(90deg, #AAB7B8 0%, #566573 95%);
+        color: #16213e;
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 10px 26px;
+        border: none;
+        font-size: 1.11rem;
+        margin-top: 12px;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(90deg,#566573 0%, #AAB7B8 99%);
+        color: #F2F3F4;
+      }
+    </style>
+</head>
+<body>
+    <div class="navbar">Credit Card Parser</div>
+    <div class="main-card">
+      <h2>Parsed Statement Table</h2>
+      <div class="table-responsive">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>Credit Card - Last 4 Digits</th>
+            <th>Transaction Date</th>
+            <th>Card Variant</th>
+            <th>Transaction Amount</th>
+            <th>Bank Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in table_data %}
+          <tr>
+            <td>{{ row["Credit Card - Last 4 Digits"] }}</td>
+            <td>{{ row["Transaction Date"] }}</td>
+            <td>{{ row["Card Variant"] }}</td>
+            <td>{{ row["Transaction Amount"] }}</td>
+            <td>{{ row["Bank Name"] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      <div class="text-center mt-4">
+        <a href="{{ url_for('download') }}" class="btn btn-primary">Download CSV</a>
+      </div>
+    </div>
+</body>
+</html>
